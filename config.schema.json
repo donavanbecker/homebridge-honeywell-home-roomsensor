@@ -4,109 +4,139 @@
   "singular": true,
   "headerDisplay": "<p align='center'><img width='250px' src='https://user-images.githubusercontent.com/3979615/71876008-d99d7400-3179-11ea-909b-9d2a3d1e670f.png'></p>\n\nThe **Homebridge Honeywell Home Room Sensor** plugin is and add-on to the **Homebridge Honeywell Home** plugin.\n\n**Homebridge Honeywell Home Room Sensor** plugin allows you to access your T9 Honeywell Home thermostat room sensor(s) from HomeKit. To get started link your Honeywell Home account using the button below.",
   "footerDisplay": "Your Honeywell Home account has been linked. Please raise any issues on our [project page](https://github.com/homebridge-plugins/homebridge-honeywell-home/issues).",
-  "schema": {
-    "type": "object",
-    "properties": {
-      "name": {
-        "type": "string",
-        "title": "Name",
-        "default": "HoneywellHomeRoomSensor",
-        "required": true
-      },
-      "credentials": {
-        "type": "object",
-        "properties": {
-          "consumerKey": {
-            "title": "Consumer Key",
-            "type": "string",
-            "required": true
-          },
-          "consumerSecret": {
-            "title": "Consumer Secret",
-            "type": "string"
-          },
-          "refreshToken": {
-            "title": "Refresh Token",
-            "type": "string",
-            "required": true
-          },
-          "notice": {
-            "title": "Notice",
-            "type": "string",
-            "required": true,
-            "default": "Keep your tokens a secret!"
+    "schema": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "title": "Name",
+          "default": "HoneywellHomeRoomSensor",
+          "required": true
+        },
+        "credentials": {
+          "type": "object",
+          "properties": {
+            "consumerKey": {
+              "title": "Consumer Key",
+              "type": "string",
+              "required": true
+            },
+            "consumerSecret": {
+              "title": "Consumer Secret",
+              "type": "string"
+            },
+            "refreshToken": {
+              "title": "Refresh Token",
+              "type": "string",
+              "required": true
+            },
+            "notice": {
+              "title": "Notice",
+              "type": "string",
+              "required": true,
+              "default": "Keep your tokens a secret!"
+            }
           }
-        }
-      },
-      "options": {
-        "type": "object",
-        "properties": {
-          "ttl": {
-            "title": "TTL",
-            "type": "number",
-            "minimum": 300,
-            "requried": false
-          },
-          "hide_temperature": {
-            "title": "Hide Temperature Sensor(s)",
-            "type": "boolean",
-            "requried": false
-          },
-          "hide_humidity": {
-            "title": "Hide Humidity Sensor(s)",
-            "type": "boolean",
-            "requried": false
-          },
-          "hide_occupancy": {
-            "title": "Hide Occupancy Sensor(s)",
-            "type": "boolean",
-            "requried": false
-          },
-          "hide_motion": {
-            "title": "Hide Motion Sensor(s)",
-            "type": "boolean",
-            "requried": false
+        },
+        "options": {
+          "type": "object",
+          "properties": {
+            "ttl": {
+              "title": "TTL",
+              "type": "number",
+              "minimum": 300,
+              "placeholder": 300,
+              "description": "Indicates the number of seconds between polls of the Honeywell Home service."
+            },
+            "roomsensor": {
+              "title": "Room Sensor",
+              "type": "object",
+              "properties": {
+                "hide": {
+                  "title": "Hide Room Sensor(s)",
+                  "type": "boolean",
+                  "requried": false
+                },
+                "hide_temperature": {
+                  "title": "Hide Temperature Service",
+                  "type": "boolean",
+                  "requried": false
+                },
+                "hide_humidity": {
+                  "title": "Hide Humidity Service",
+                  "type": "boolean",
+                  "requried": false
+                },
+                "hide_occupancy": {
+                  "title": "Hide Occupancy Service",
+                  "type": "boolean",
+                  "requried": false
+                },
+                "hide_motion": {
+                  "title": "Hide Motion Service",
+                  "type": "boolean",
+                  "requried": false
+                }
+              }
+            }
           }
         }
       }
-    }
-  },
-  "layout": [
-    {
-      "type": "fieldset",
-      "title": "Advanced Settings",
-      "expandable": true,
-      "expanded": false,
-      "items": [
-        {
-          "type": "fieldset",
-          "title": "Manual Setup",
-          "expandable": true,
-          "expanded": false,
-          "items": [
-            {
-              "type": "help",
-              "helpvalue": "<h5></h5><em class='primary-text'>This is for Manual Setup Only.</em>"
-            },
-            "name",
-            "credentials.consumerKey",
-            "credentials.consumerSecret",
-            "credentials.refreshToken"
-          ]
-        },
-        {
-          "type": "help",
-          "helpvalue": "<h5>TTL</h5><em class='primary-text'>TTL indicates the number of seconds between polls of the Honeywell Home service.</em>"
-        },
-        {
-          "key": "options.ttl",
-          "notitle": true
-        },
-        "options.hide_temperature",
-        "options.hide_humidity",
-        "options.hide_occupancy",
-        "options.hide_motion"
-      ]
-    }
-  ]
-}
+    },
+    "layout": [
+      {
+        "type": "fieldset",
+        "title": "Honeywell Home Account Info",
+        "expandable": true,
+        "expanded": false,
+        "items": [
+          {
+            "type": "help",
+            "helpvalue": "<h5></h5><em class='primary-text'>This is for Manual Setup Only.</em>"
+          },
+          "name",
+          "credentials.consumerKey",
+          "credentials.consumerSecret",
+          "credentials.refreshToken"
+        ]
+      },
+      {
+        "type": "fieldset",
+        "title": "Advanced Settings",
+        "expandable": true,
+        "expanded": false,
+        "items": [
+          {
+            "type": "help",
+            "helpvalue": "<h5>TTL</h5><em class='primary-text'>TTL indicates the number of seconds between polls of the Honeywell Home service.</em>"
+          },
+          {
+            "key": "options.ttl",
+            "notitle": true
+          },
+          {
+            "type": "fieldset",
+            "title": "Room Sensor Options",
+            "expandable": true,
+            "expanded": false,
+            "items": [
+              {
+                "type": "help",
+                "helpvalue": "<em class='primary-text'>Allows you to hide your Room Sensor(s).</em>"
+              },
+              "options.roomsensor.hide",
+              {
+                "type": "help",
+                "helpvalue": "<h5>Hide Room Sensor Services</h5><em class='primary-text'>Allows you to hide your tempeture sensor, occupancy sensor, motion sensor, or humidity sensor of your Room Sensor(s).</em>"
+              },
+              "options.roomsensor.hide_temperature",
+              "options.roomsensor.hide_occupancy",
+              "options.roomsensor.hide_motion",
+              "options.roomsensor.hide_humidity"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+  

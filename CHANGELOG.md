@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. This project uses [Semantic Versioning](https://semver.org/)
 
+## [Version 3.0.0](https://github.com/donavanbecker/homebridge-honeywell-home-roomSensor/compare/v2.1.0...v3.0.0) (2020-09-17)
+
+### Major Changes
+
+- Completely reworked the way that Room Sensors discovered.
+
 ## [Version 2.1.0](https://github.com/donavanbecker/homebridge-honeywell-home-roomSensor/compare/v2.0.1...v2.1.0) (2020-08-29)
 
 ### Changes
