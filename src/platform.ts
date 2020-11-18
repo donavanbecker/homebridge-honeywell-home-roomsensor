@@ -112,6 +112,8 @@ export class HoneywellHomeRoomSensorPlatform implements DynamicPlatformPlugin {
      */
     this.config.devicediscovery;
 
+    this.config.options = this.config.options || {};
+
     if (this.config.options?.roomsensor) {
       // Room Sensor Config Options
       this.config.options.roomsensor.hide;
@@ -121,8 +123,10 @@ export class HoneywellHomeRoomSensorPlatform implements DynamicPlatformPlugin {
       this.config.options.roomsensor.hide_humidity;
     }
 
-    this.config.options!.ttl = this.config.options?.ttl || 300; // default 300 seconds
-
+    if (this.config.options) {
+      this.config.options.ttl = this.config.options!.ttl || 300; // default 300 seconds
+    }
+    
     if (!this.config.credentials?.consumerSecret && this.config.options!.ttl! < 300) {
       this.log.debug('TTL must be set to 300 or higher unless you setup your own consumerSecret.');
       this.config.options!.ttl! = 300;

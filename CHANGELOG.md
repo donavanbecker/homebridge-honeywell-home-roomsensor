@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. This project uses [Semantic Versioning](https://semver.org/)
 
+## [Version 3.1.0](https://github.com/donavanbecker/homebridge-honeywell-home-roomSensor/compare/v3.0.0...v3.1.0) (2020-11-18)
+
+### Changes
+
+- Fix for `Cannot set property 'ttl' of undefined`.
+- Updated other dependencies.
+
 ## [Version 3.0.0](https://github.com/donavanbecker/homebridge-honeywell-home-roomSensor/compare/v2.1.0...v3.0.0) (2020-09-17)
 
 ### Major Changes
